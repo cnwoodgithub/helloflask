@@ -1,21 +1,27 @@
-[主页](https://github.com/greyli/helloflask)
-/ [勘误](https://github.com/greyli/helloflask/blob/master/errata/errata.md)
-/ FAQ
-/ [可改进实现](https://github.com/greyli/helloflask/blob/master/improvement/improvement.md)
-/ [版本更新记录](https://github.com/greyli/helloflask/blob/master/CHANGES.md)
-/ [示例程序](https://github.com/greyli/helloflask/blob/master/demos/)
-/ [HelloFlask.com](http://helloflask.com)
-/ [本书主页](http://helloflask.com/book)
-
 # FAQ
 
 如果你想提一个问题，请创建Issue。
+
+### 第 9 章验证邮件部分，点击邮件里的验证链接无法通过验证，提示 token invalid
+
+回退 Werkzeug 版本书中注明的 0.14.1 可解决。
+
+### 第 6 章 Sendgrid 使用报错
+
+在第 6 章，如果执行 sendgrid 部分的代码出现如下报错：
+
+- `TypeError: <function Email at 0x7fce5c021e18> is not JSON serializable`
+- `AttributeError：list object has no attrribute _type`
+- `TypeError: __init__() got an unexpected keyword argument 'apikey'`
+
+统一的解决方法均为回退 sendgrid-python 到书中注明的 5.3.0 版本。
 
 ### 执行 `flask run` 提示找不到程序
 
 执行以下检查：
 * 安装了所有依赖，包括开发依赖（使用 `pipenv install --dev`）
 * 当前目录在项目根目录，对于第一部分的 6 个示例程序来说，切换到每个程序各自的根目录。遵循每章开头的安装命令。
+* 确保没有在上层目录创建 .env 和 .flaskenv 文件。
 
 ### 执行 `flask run` 报错 `AttributeError: 'module' object has no attribute 'SSLContext'`
 
@@ -89,7 +95,7 @@ Flask-RESTful以及它的fork改良版Flask-RESTplus中的请求解析、响应�
 ### 为什么不叫REST API而使用Web API
 有些读者可能不理解我为什么把常说的REST API/RESTful API说成Web API，我摘取书里的这部分内容供你参考一下：
 
-> “仅仅通过HTTP协议返回JSON或XML数据的Web API并不能算是严格意义上的REST API。REST的提出者也在博文（http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven）中指出不是使用了HTTP的API都叫REST API。为了避免产生混乱，本章会尽量避免REST这个词。事实上，我们不必完全按照REST的架构要求来设计API。要尽量从API的自身特点和普适的规范来设计，而不是拘泥于REST一词。”
+> “仅仅通过HTTP协议返回JSON或XML数据的Web API并不能算是严格意义上的REST API。REST的提出者也在博文（ http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven ）中指出不是使用了HTTP的API都叫REST API。为了避免产生混乱，本章会尽量避免REST这个词。事实上，我们不必完全按照REST的架构要求来设计API。要尽量从API的自身特点和普适的规范来设计，而不是拘泥于REST一词。”
 
 
 ### 执行`flask forge`命令后显示`no such command`
